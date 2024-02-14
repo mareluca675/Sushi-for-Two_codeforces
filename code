@@ -1,0 +1,33 @@
+#include <iostream>
+ 
+using namespace std;
+ 
+int n, a, b, mini, maxi, secv1 = 1, secv2 = 1;
+ 
+int main()
+{
+    cin >> n >> b;
+    
+    for(int i = 1; i < n; i ++){
+        cin >> a;
+        
+        if(a == b){
+            secv1 ++;
+        }
+        else{
+            mini = min(secv1, secv2);
+            maxi = max(mini, maxi);
+            secv2 = secv1;
+            secv1 = 1;
+        }
+        
+        b = a;
+    }
+    
+    mini = min(secv1, secv2);
+    maxi = max(mini, maxi);
+    
+    cout << maxi * 2;
+    
+    return 0;
+}
